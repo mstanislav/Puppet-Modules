@@ -87,7 +87,6 @@ class mcollective::child {
             group   => "root",
             mode    => "0440",
             source  => "puppet:///modules/mcollective/client.cfg",
-            require => Package["mcollective-client"],
-            notify  => Service["mcollective"];
+            require => Package["mcollective-client"];
     }
 }
