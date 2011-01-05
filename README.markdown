@@ -6,3 +6,7 @@
 ### mCollective ###
 **Platform:** Ubuntu 10.04  
 **Description:** Provides ActiveMQ & the mCollective client, server, and plugins
+
+### Nagios NRPE ###
+**Platform:** Ubuntu 10.04  
+**Description:** Provides Nagios NRPE with a decently stocked nrpe.cfg and some non-standard plugins I use   
