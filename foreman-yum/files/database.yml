@@ -1,0 +1,7 @@
+production:
+  adapter: mysql
+  database: puppet
+  username: puppet
+  password: password
+  host: localhost
+  socket: "/var/lib/mysql/mysql.sock"

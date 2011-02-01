@@ -1,0 +1,50 @@
+log_facility=daemon
+pid_file=/var/run/nrpe.pid
+debug=0
+
+nrpe_user=nagios
+nrpe_group=nagios
+
+server_port=5666
+allowed_hosts=127.0.0.1
+
+dont_blame_nrpe=1
+
+command_timeout=60
+connection_timeout=300
+
+command[check_load]=/usr/<%= libpath %>/nagios/plugins/check_load -w $ARG1$ -c $ARG2$
+command[check_local_disk]=/usr/<%= libpath %>/nagios/plugins/check_disk -w $ARG1$ -c $ARG2$ -W $ARG3$ -K $ARG4$
+command[check_swap]=/usr/<%= libpath %>/nagios/plugins/check_swap -w $ARG1$ -c $ARG2$
+command[check_memory]=/usr/<%= libpath %>/nagios/plugins/contrib/check_memory.sh -w $ARG1$ -c $ARG2$
+command[check_procs]=/usr/<%= libpath %>/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$
+command[check_ping]=/usr/<%= libpath %>/nagios/plugins/check_ping -H $ARG1$ -w $ARG2$ -c $ARG3$
+command[check_ntp]=/usr/<%= libpath %>/nagios/plugins/check_ntp_time -q -H $ARG1$ -w $ARG2$ -c $ARG3$
+command[check_dns]=/usr/<%= libpath %>/nagios/plugins/check_dns -H $ARG1$ -w $ARG2$ -c $ARG3$
+command[check_ssh]=/usr/<%= libpath %>/nagios/plugins/check_ssh -H $ARG1$ -p $ARG2$
+command[check_mysql]=/usr/<%= libpath %>/nagios/plugins/contrib/check_mysqld.pl -H $ARG1$ -P $ARG2$ -u $ARG3$ -p $ARG4$ -s ON
+command[check_mysql_no_pass]=/usr/<%= libpath %>/nagios/plugins/contrib/check_mysqld.pl -H $ARG1$ -P $ARG2$ -u $ARG3$
+command[check_puppet_client]=/usr/<%= libpath %>/nagios/plugins/contrib/check_puppet.pl $ARG1$
+command[check_syslog_client]=/usr/<%= libpath %>/nagios/plugins/check_procs -w 1:1 -c 1:1 -C syslogd
+command[check_local_inodes]=/usr/<%= libpath %>/nagios/plugins/contrib/check_inodes.pl / $ARG1$ $ARG2$
+command[check_bind_resolution]=/usr/<%= libpath %>/nagios/plugins/check_dns -H $ARG1$ -s $ARG2$
+command[check_bind_transfer]=/usr/<%= libpath %>/nagios/plugins/check_tcp -H localhost -p 53
+command[check_nagios]=/usr/<%= libpath %>/nagios/plugins/check_nagios -F $ARG1$ -e $ARG2$ -C $ARG3$
+command[check_smtp]=/usr/<%= libpath %>/nagios/plugins/check_smtp -H $ARG1$ -p $ARG2$ -w $ARG3$ -c $ARG4$ -t $ARG5$
+command[check_http]=/usr/<%= libpath %>/nagios/plugins/check_http -H $ARG1$ -u $ARG2$ -p $ARG3$ -w $ARG4$ -c $ARG5$ -t $ARG6$
+command[check_https]=/usr/<%= libpath %>/nagios/plugins/check_http -H $ARG1$ -u $ARG2$ -p $ARG3$ -w $ARG4$ -c $ARG5$ -t $ARG6$ -S
+command[check_http_port]=/usr/<%= libpath %>/nagios/plugins/check_tcp -H $ARG1$ -p $ARG2$ -w $ARG3$ -c $ARG4$ -t $ARG5$
+command[check_https_port]=/usr/<%= libpath %>/nagios/plugins/check_tcp -H $ARG1$ -p $ARG2$ -w $ARG3$ -c $ARG4$ -t $ARG5$
+command[check_passenger]=/usr/<%= libpath %>/nagios/plugins/check_procs -a passenger-spawn-server
+command[check_clam]=/usr/<%= libpath %>/nagios/plugins/check_clamd -H localhost -p 3310
+command[check_freshclam]=/usr/<%= libpath %>/nagios/plugins/contrib/check_freshclam.sh
+command[check_tomcat]=/usr/<%= libpath %>/nagios/plugins/check_tcp -H $ARG1$ -p $ARG2$ -w $ARG3$ -c $ARG4$ -t $ARG5$
+command[check_tomcat_ssl]=/usr/<%= libpath %>/nagios/plugins/check_tcp -H $ARG1$ -p $ARG2$ -w $ARG3$ -c $ARG4$ -t $ARG5$ -S
+command[restart_puppet]=/usr/bin/sudo /usr/sbin/restart-puppet $ARG1$ $ARG2$ $ARG3$
+command[restart_activemq]=/usr/bin/sudo /usr/sbin/restart-activemq $ARG1$ $ARG2$ $ARG3$
+command[check_snmp]=/usr/<%= libpath %>/nagios/plugins/check_snmp -H $ARG1$ -o $ARG2$ -C $ARG3$ -t $ARG4$
+command[check_mcollective_registrations]=/usr/<%= libpath %>/nagios/plugins/contrib/check_mcollective.rb -c 40
+command[check_mcollective]=/usr/<%= libpath %>/nagios/plugins/check_procs -w 1:1 -c 1:1 -C ruby -a 'mcollectived'
+command[check_activemq]=/usr/<%= libpath %>/nagios/plugins/check_tcp -H localhost -p 6163 -t 5
+command[check_spamassassin]=/usr/<%= libpath %>/nagios/plugins/check_procs -w 1:1 -c 1:1 -C spamd -u root 
+command[check_dell]=/usr/<%= libpath %>/nagios/plugins/contrib/check_openmanage
