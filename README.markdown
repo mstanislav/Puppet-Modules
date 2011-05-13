@@ -13,6 +13,9 @@
 ### Apache ###
 **Description:** Provides a basic Apache installation + configuration
 
+### duo_unix ###
+**Description:** Provides UNIX Duo Security (www.duosecurity.com) integration for SSH ForceCommand via login_duo
+
 ### Foreman ###
 **Description:** Provides Foreman within an Apache + Passenger & MySQL deployment
 
