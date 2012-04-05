@@ -32,4 +32,4 @@
 **Description:** Provides Puppet client and server configuration. Puppet server uses a Apache + Passenger & MySQL deployment.
 
 ### Yum ###
-**Description:** Provides "MNX Solutions", "RPMForge", and "EPEL" repositories   
+**Description:** Provides "MNX Solutions", "Repoforge" (previously "RPMForge"), and "EPEL" repositories   
