@@ -1,8 +1,0 @@
---- 
-:modulepath: /etc/puppet/modules/
-:tftppath: tftp/
-:ldap: false
-:puppet_server: puppet
-:unattended: false
-:puppet_interval: 30
-:document_root: /usr/share/foreman/public
